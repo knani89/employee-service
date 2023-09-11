@@ -33,7 +33,7 @@ pipeline {
     
     stage('deploy to EKS Cluster') {
       steps {
-      node('eks'){    
+      node('eks-cluster'){    
         checkout scm
         sh 'aws eks --region us-east-1 update-kubeconfig --name terraform-eks-demo'
         sh '/home/ec2-user/bin/kubectl apply -f deployment.yaml'
